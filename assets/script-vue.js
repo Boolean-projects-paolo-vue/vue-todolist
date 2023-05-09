@@ -25,8 +25,10 @@ const app = Vue.createApp({
     methods: {
         addPoint() {
           if (this.newPoint.trim()) {
-            this.ListArray.unshift({ text: this.newPoint, done: false })
-            this.newPoint = ''
+            this.ListArray.unshift({ 
+                text: this.newPoint, 
+                done: false });
+            this.newPoint = '';
           }
         },
         remove(index) {
