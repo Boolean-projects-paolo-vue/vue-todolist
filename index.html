@@ -24,19 +24,29 @@
 	<div class="container" id="todo">
 		<div>
 			<input
-			@keyup.enter="addPoint" type="text" placeholder="Nuovo punto" v-model="newPoint"
+			@keyup.enter="addPoint" type="text" 
+			placeholder="Nuovo punto" 
+			v-model="newPoint"
 			>
+			
 			<button @click="addPoint">Aggiungi</button>
+
+			<div v-show="inputError">
+				<small class="text-danger">
+					Devi inserire un testo di almeno 5 caratteri
+				</small>
+			</div>
+
 		</div>
 		
 		<div>
-			<ul>
-				<li v-for="(point, index) in ListArray">
-				 	{{ point.text }}
+			<ul v-if="listArray.length != 0">
+				<li v-for="(point, index) in listArray">
+					<span :class="{'completed': point.done}" @click="toggleDone(index)">{{ point.text }}</span>
+					<i class="fas fa-times" @click="deleteItem(index)"></i>
 				</li>
-				  
-				
 			</ul>
+			<p v-else>non ci sono task</p>
 		</div>
 	</div>
 

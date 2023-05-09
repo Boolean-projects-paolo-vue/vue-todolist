@@ -1,11 +1,9 @@
 const app = Vue.createApp({
     data() {
         return {
-            newPoint: {
-                text:'',
-                done: false
-            },
-            ListArray: [
+            inputError: false,
+            newPoint: '',
+            listArray: [
                 {
                     text:'fare la spesa',
                     done: false
@@ -19,26 +17,33 @@ const app = Vue.createApp({
                     done:false
                 }
                
-            ]  
-        }
-    },
-    methods: {
-        addPoint() {
-          if (this.newPoint.trim()) {
-            this.ListArray.unshift({ 
-                text: this.newPoint, 
-                done: false });
-            this.newPoint = '';
-          }
-        },
-        remove(index) {
-          this.ListArray.splice(index, 1)
-        },
-        toggleDone(index) {
-          this.ListArray[index].done = !this.ListArray[index].done
-        }
+            ],
+        };
     },
 
+    methods: {
+        addPoint() {
+            let cleanedPoint= this.newPoint.trim();
+            if (cleanedPoint.length > 4 != '') {
+                this.listArray.unshift({ 
+                    text: this.newPoint,
+                    done: false,
+                });
+                this.newPoint = '';
+                this.inputError = false;
+            }
+            else {
+                this.inputError = true;
+            }   
+        },
+        deleteItem(index) {
+            this.listArray.splice(index, 1);
+        },
+        toggleDone(index) {
+            this.listArray[index].done = !this.listArray[index].done
+        },
+    },   
+        
 });
 
 app.mount('#todo');
