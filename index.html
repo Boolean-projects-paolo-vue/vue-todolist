@@ -14,9 +14,33 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="todo">
-        
-    </div>
+
+	<div class="logo">
+		<img src="" alt="">
+	</div>
+
+	
+
+	<div class="container" id="todo">
+		<div>
+			<input
+			@keyup.enter="addPoint" type="text" placeholder="Nuovo punto" v-model="newPoint"
+			>
+			<button @click="addPoint">Aggiungi</button>
+		</div>
+		
+		<div>
+			<ul>
+				<li v-for="(point, key) in ListArray">
+				 	{{ point.text }}
+				</li>
+				  
+				
+			</ul>
+		</div>
+	</div>
+
+    
     
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="assets/script-vue.js"></script>
