@@ -14,15 +14,13 @@
     <title>Document</title>
 </head>
 <body>
+	<div class="container rounded p-3" id="todo">
 
-	<div class="logo">
-		<img src="" alt="">
-	</div>
+		<div class="logo">
+			<img src="img/logo.svg" alt="" style="height: 50px;">
+		</div>
 
-	
-
-	<div class="container" id="todo">
-		<div>
+		<div class="text-center">
 			<input
 			@keyup.enter="addPoint" type="text" 
 			placeholder="Nuovo punto" 
@@ -39,11 +37,13 @@
 
 		</div>
 		
-		<div>
-			<ul v-if="listArray.length != 0">
-				<li v-for="(point, index) in listArray">
+		<div class="list-container">
+			<ul v-if="listArray.length != 0" class="py-3">
+				<li v-for="(point, index) in listArray" class="list py-1">
 					<span :class="{'completed': point.done}" @click="toggleDone(index)">{{ point.text }}</span>
-					<i class="fas fa-times" @click="deleteItem(index)"></i>
+					<i class="fas fa-times 
+					px-2 
+					d-flex justify-content-center align-items-center" style="border: 1px solid black;" @click="deleteItem(index)"></i>
 				</li>
 			</ul>
 			<p v-else>non ci sono task</p>

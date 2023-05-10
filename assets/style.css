@@ -2,7 +2,25 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	list-style: none;
 }
+
+
+.container{
+	max-width: 1000px;
+	background-color:aliceblue;
+	margin: auto;
+	
+}
+
+
+
+.list{
+	display: flex;
+	justify-content: space-between;
+}
+
+
 
 .completed{
     text-decoration: line-through;
